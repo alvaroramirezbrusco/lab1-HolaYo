@@ -16,14 +16,22 @@ class SegundaActivity : AppCompatActivity() {
     override fun onPause() { super.onPause(); Log.d("VIDA", "Main → onPause") }
     override fun onStop() { super.onStop(); Log.d("VIDA", "Main → onStop") }
     override fun onDestroy() { super.onDestroy(); Log.d("VIDA", "Main → onDestroy") }
-
+    override fun onRestart() { super.onRestart(); Log.d("VIDA", "Main + onRestart") }
 
     private var contador = 0
+    private val STATE_COUNT = "count"
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(STATE_COUNT, contador)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d("VIDA", "Segunda → onCreate")
         setContentView(R.layout.activity_segunda)
+
+        contador = savedInstanceState?.getInt(STATE_COUNT, 0) ?: 0
 
         val nombre = intent.getStringExtra("nombre") ?: "misterioso visitante"
         findViewById<TextView>(R.id.tvBienvenida).text =

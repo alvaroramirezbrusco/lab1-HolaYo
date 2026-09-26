@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() { super.onPause(); Log.d("VIDA", "Main → onPause") }
     override fun onStop() { super.onStop(); Log.d("VIDA", "Main → onStop") }
     override fun onDestroy() { super.onDestroy(); Log.d("VIDA", "Main → onDestroy") }
+    override fun onRestart() { super.onRestart(); Log.d("VIDA", "Main + onRestart") }
 
     private var saludoFormal = true
     override fun onCreate(savedInstanceState: Bundle?) {
