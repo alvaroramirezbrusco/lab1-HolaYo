@@ -1,5 +1,6 @@
 package com.example.holayo
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -43,6 +44,25 @@ class SegundaActivity : AppCompatActivity() {
         findViewById<Button>(R.id.btnSumar).setOnClickListener {
             contador++
             tvContador.text = contador.toString()
+        }
+
+        //botón compartir
+        findViewById<Button>(R.id.btnCompartir).setOnClickListener {
+
+            val texto = """
+                ¡Hola! Este es mi perfil.
+                
+                Nombre: $nombre
+                Contador: $contador
+            """.trimIndent()
+
+            val intentCompartir = Intent(Intent.ACTION_SEND).apply {
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, texto)
+            }
+            startActivity(
+                Intent.createChooser(intentCompartir, "Compartir mi perfil")
+            )
         }
     }
 }

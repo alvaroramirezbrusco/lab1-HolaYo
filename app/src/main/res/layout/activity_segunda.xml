@@ -34,4 +34,10 @@
         android:hint="@string/hint_notas"
         android:inputType="textMultiLine" />
 
+    <Button
+        android:id="@+id/btnCompartir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btnCompartir" />
+
 </LinearLayout>
